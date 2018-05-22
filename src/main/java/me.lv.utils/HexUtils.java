@@ -1,7 +1,9 @@
-package me.lv.secret;
+package me.lv.utils;
 
 /**
- * Created by lzw on 2017/11/19.
+ *
+ * @author lzw
+ * @date 2017/11/19
  */
 public class HexUtils {
     private HexUtils() {

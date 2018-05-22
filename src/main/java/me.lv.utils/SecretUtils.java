@@ -1,4 +1,4 @@
-package me.lv.secret;
+package me.lv.utils;
 
 import com.sun.org.apache.xml.internal.security.utils.Base64;
 
@@ -11,7 +11,9 @@ import java.security.Key;
 import java.security.MessageDigest;
 
 /**
- * Created by lzw on 2017/11/19.
+ *
+ * @author lzw
+ * @date 2017/11/19
  */
 public class SecretUtils {
 
@@ -116,10 +118,9 @@ public class SecretUtils {
      */
     public static String getDES3encode(String plainText, String iv, String secretKey) {
         try {
-            Key deskey = null;
             DESedeKeySpec spec = new DESedeKeySpec(secretKey.getBytes());
             SecretKeyFactory keyfactory = SecretKeyFactory.getInstance("desede");
-            deskey = keyfactory.generateSecret(spec);
+            Key deskey = keyfactory.generateSecret(spec);
 
             Cipher cipher = Cipher.getInstance("desede/CBC/PKCS5Padding");
             IvParameterSpec ips = new IvParameterSpec(iv.getBytes());
@@ -143,10 +144,9 @@ public class SecretUtils {
      */
     public static String getDES3decode(String encryptText, String iv, String secretKey) {
         try {
-            Key deskey = null;
             DESedeKeySpec spec = new DESedeKeySpec(secretKey.getBytes());
             SecretKeyFactory keyfactory = SecretKeyFactory.getInstance("desede");
-            deskey = keyfactory.generateSecret(spec);
+            Key deskey = keyfactory.generateSecret(spec);
             Cipher cipher = Cipher.getInstance("desede/CBC/PKCS5Padding");
             IvParameterSpec ips = new IvParameterSpec(iv.getBytes());
             cipher.init(Cipher.DECRYPT_MODE, deskey, ips);
