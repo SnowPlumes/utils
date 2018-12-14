@@ -1,6 +1,5 @@
-package me.lv.utils;
+package me.lv.util;
 
-import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 

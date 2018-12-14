@@ -1,4 +1,4 @@
-package me.lv.utils;
+package me.lv.util;
 
 /**
  *

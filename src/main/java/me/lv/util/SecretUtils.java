@@ -1,4 +1,4 @@
-package me.lv.utils;
+package me.lv.util;
 
 import com.sun.org.apache.xml.internal.security.utils.Base64;
 
