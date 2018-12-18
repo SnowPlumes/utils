@@ -107,11 +107,8 @@ public class ExcelUtil {
      *            指定输出的字段,逗号分开
      * @param dataList
      * @throws IOException
-     * @throws ClassNotFoundException
-     * @throws NoSuchFieldException
      */
-    public static <T> void exportExcel(String columnNameStr, String columnFieldStr, List<T> dataList)
-            throws Exception {
+    public static <T> void exportExcel(String columnNameStr, String columnFieldStr, List<T> dataList) throws Exception {
         logger.debug(">>>>>> export excel start ...");
         String[] columnNames = URLDecoder.decode(columnNameStr, "UTF-8").split(",");
         String[] columnFields = columnFieldStr.split(",");
