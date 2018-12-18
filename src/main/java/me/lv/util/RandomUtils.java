@@ -116,15 +116,12 @@ public class RandomUtils {
 	private String buildRandom(final int length) {
 		// 长度为length的最多整数
 		String maxStr = StringUtils.rightPad("1", length + 1, '0');
-		// System.out.println("maxStr=" + maxStr);
 		long max = Long.parseLong(maxStr);
-		long i = random.nextLong(); // 取得随机数
-		// System.out.println("befor i=" + i);
-		i = Math.abs(i) % max; // 取正数，并限制其长度
-		// System.out.println("after i=" + i);
+		// 取得随机数
+		long i = random.nextLong();
+		// 取正数，并限制其长度
+		i = Math.abs(i) % max;
 		String value = StringUtils.leftPad(String.valueOf(i), length, '0');
-		// System.out.println("length=" + length);
-		// System.out.println("value=" + value);
 		return value;
 	}
 

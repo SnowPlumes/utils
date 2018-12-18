@@ -45,11 +45,11 @@ public class DateUtils {
 	/**
 	 * 要用到的DATE Format的定义
 	 */
-	public static String DATE_FORMAT_DATEONLY = "yyyy-MM-dd"; // 年/月/日
-	public static String DATE_FORMAT_DATETIME = "yyyy-MM-dd HH:mm:ss"; // 年/月/日
+	public static String DATE_FORMAT_DATEONLY = "yyyy-MM-dd";
+	public static String DATE_FORMAT_DATETIME = "yyyy-MM-dd HH:mm:ss";
 	public static SimpleDateFormat sdfDateTime = new SimpleDateFormat(DateUtils.DATE_FORMAT_DATETIME);
-	// Global SimpleDateFormat object
 	public static SimpleDateFormat sdfDateOnly = new SimpleDateFormat(DateUtils.DATE_FORMAT_DATEONLY);
+
 	public static final SimpleDateFormat SHORTDATEFORMAT = new SimpleDateFormat("yyyyMMdd");
 	public static final SimpleDateFormat SHORT_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 	public static final SimpleDateFormat LONG_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
