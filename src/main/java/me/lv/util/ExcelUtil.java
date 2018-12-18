@@ -35,7 +35,7 @@ public class ExcelUtil {
     private static final String EXCEL_XLS = "xls";
     private static final String EXCEL_XLSX = "xlsx";
     private static final String POINT = ".";
-    private static Pattern PATTERN = Pattern.compile("^//d+(//.//d+)?{1}quot");
+    private static Pattern PATTERN = Pattern.compile("^(\\-|\\+)?\\d+(\\.\\d+)?$");
     private static Logger logger = LoggerFactory.getLogger(ExcelUtil.class);
 
     /**
@@ -112,6 +112,7 @@ public class ExcelUtil {
      */
     public static <T> void exportExcel(String columnNameStr, String columnFieldStr, List<T> dataList)
             throws Exception {
+        logger.debug(">>>>>> export excel start ...");
         String[] columnNames = URLDecoder.decode(columnNameStr, "UTF-8").split(",");
         String[] columnFields = columnFieldStr.split(",");
         // 声明一个工作薄
@@ -163,11 +164,10 @@ public class ExcelUtil {
             row = sheet.createRow(index);
             T t = it.next();
             for (int i = 0; i < columnFields.length; i++) {
-            HSSFCell cell = row.createCell(i);
-            cell.setCellStyle(fieldStyle);
-            String fieldName = columnFields[i];
+                HSSFCell cell = row.createCell(i);
+                cell.setCellStyle(fieldStyle);
+                String fieldName = columnFields[i];
                 Object value = getValue(t, fieldName);
-                // 判断值的类型后进行强制类型转换
                 String textValue = getString(workbook, sheet, row, index, i, value);
                 // 如果不是图片数据，就利用正则表达式判断textValue是否全部由数字组成
                 if (textValue != null) {
@@ -184,11 +184,21 @@ public class ExcelUtil {
         }
         FileOutputStream fout = new FileOutputStream("D:/test.xls");
         workbook.write(fout);
-        String str = "导出成功！";
-        System.out.println(str);
+        logger.info(">>>>>> 导出成功！");
         fout.close();
+        logger.debug(">>>>>> export excel end ...");
     }
 
+    /**
+     * 判断值的类型后进行强制类型转换
+     * @param workbook
+     * @param sheet
+     * @param row
+     * @param index
+     * @param i
+     * @param value
+     * @return
+     */
     private static String getString(HSSFWorkbook workbook, HSSFSheet sheet, HSSFRow row, int index, int i, Object value) {
         String textValue = null;
         // 声明一个画图的顶级管理器
