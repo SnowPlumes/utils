@@ -99,12 +99,10 @@ public class ExcelUtil {
     }
 
     /**
-     * 新的EXCEL输出工具类
+     * EXCEL输出工具类
      *
-     * @param columnNameStr
-     *            指定输出的字段名,逗号分开
-     * @param columnFieldStr
-     *            指定输出的字段,逗号分开
+     * @param columnNameStr 指定输出的标题名,逗号分开
+     * @param columnFieldStr 指定输出的字段,逗号分开
      * @param dataList
      * @throws IOException
      */
@@ -222,7 +220,7 @@ public class ExcelUtil {
             }
         } else if (value instanceof Date) {
             Date date = (Date) value;
-            textValue = simpleDateFormat.format(date);
+            textValue = getSimpleDateFormat().format(date);
         } else if (value instanceof byte[]) {
             // 有图片时，设置行高为60px;
             row.setHeightInPoints(60);
@@ -292,7 +290,7 @@ public class ExcelUtil {
             return String.valueOf(cell.getBooleanCellValue());
         } else if (cell.getCellType() == XSSFCell.CELL_TYPE_NUMERIC) {
             // 返回数值类型的值
-            return String.valueOf(decimalFormat.format(cell.getNumericCellValue()));
+            return String.valueOf(getDecimalFormat().format(cell.getNumericCellValue()));
         } else {
             // 返回字符串类型的值
             return String.valueOf(cell.getStringCellValue());
