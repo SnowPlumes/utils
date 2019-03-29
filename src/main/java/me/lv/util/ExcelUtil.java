@@ -177,10 +177,10 @@ public class ExcelUtil {
                 }
             }
         }
-        FileOutputStream fout = new FileOutputStream("D:/test.xls");
-        workbook.write(fout);
+        FileOutputStream out = new FileOutputStream("D:/test.xls");
+        workbook.write(out);
         logger.info(">>>>>> 导出成功！");
-        fout.close();
+        out.close();
         logger.debug(">>>>>> export excel end ...");
     }
 
