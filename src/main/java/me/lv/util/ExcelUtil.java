@@ -32,6 +32,9 @@ import java.util.regex.Pattern;
  */
 public class ExcelUtil {
 
+    private ExcelUtil() {
+    }
+
     private static final String EXCEL_XLS = "xls";
     private static final String EXCEL_XLSX = "xlsx";
     private static final String POINT = ".";
@@ -75,7 +78,7 @@ public class ExcelUtil {
         try {
             workbook = getWorkbook(file);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("import error ", e);
         }
 
         // 循环工作表Sheet
@@ -186,6 +189,7 @@ public class ExcelUtil {
 
     /**
      * 判断值的类型后进行强制类型转换
+     *
      * @param workbook
      * @param sheet
      * @param row
