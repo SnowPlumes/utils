@@ -13,7 +13,6 @@ import java.util.Set;
  * @Date ： 2014年4月20日 下午4:17:15
  */
 public class SensitivewordFilter {
-    @SuppressWarnings("rawtypes")
     public Map sensitiveWordMap;
     public static int minMatchTYpe = 1;
     public static int maxMatchType = 2;
@@ -126,7 +125,6 @@ public class SensitivewordFilter {
      * @return，如果存在，则返回敏感词字符的长度，不存在返回0
      * @version 1.0
      */
-    @SuppressWarnings({"rawtypes"})
     public int checkSensitiveWord(String txt, int beginIndex, int matchType) {
         //敏感词结束标识位：用于敏感词只有1位的情况
         boolean flag = false;

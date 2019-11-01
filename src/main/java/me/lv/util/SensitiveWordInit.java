@@ -19,7 +19,6 @@ import java.util.Set;
  */
 public class SensitiveWordInit {
     private String ENCODING = "UTF-8";
-    @SuppressWarnings("rawtypes")
     public HashMap sensitiveWordMap;
 
     public SensitiveWordInit() {
