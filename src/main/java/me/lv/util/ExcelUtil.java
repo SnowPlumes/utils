@@ -1,7 +1,6 @@
 package me.lv.util;
 
 import org.apache.poi.hssf.usermodel.*;
-import org.apache.poi.ss.formula.functions.T;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -21,7 +20,9 @@ import java.math.BigInteger;
 import java.net.URLDecoder;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -293,6 +294,10 @@ public class ExcelUtil {
             // 返回布尔类型的值
             return String.valueOf(cell.getBooleanCellValue());
         } else if (cell.getCellType() == XSSFCell.CELL_TYPE_NUMERIC) {
+            // 返回时间类型
+            if (HSSFDateUtil.isCellDateFormatted(cell)) {
+                return getSimpleDateFormat().format(cell.getDateCellValue());
+            }
             // 返回数值类型的值
             return String.valueOf(getDecimalFormat().format(cell.getNumericCellValue()));
         } else {
